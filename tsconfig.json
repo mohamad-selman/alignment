@@ -20,6 +20,9 @@
       "@customTypes/*": [
         "src/types/*"
       ],
+      "@utils/*": [
+        "src/utils/*"
+      ],
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
