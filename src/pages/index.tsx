@@ -1,16 +1,6 @@
 import { Layout } from '@components/Layout';
 import { Box, Typography } from '@mui/material';
-
-const navLinks = [
-  {
-    title: 'Global Alignment',
-    href: '#',
-  },
-  {
-    title: 'Local Alignment',
-    href: '#',
-  },
-];
+import navLinks from '@constants/navLinks';
 
 const Home = () => {
   return (
