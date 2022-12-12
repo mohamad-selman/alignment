@@ -34,10 +34,10 @@ export const CustomTextField = <T extends FieldValues>(props: CustomTextFieldPro
             }
           }}
           value={value || ''}
+          {...field}
           error={!!error}
           helperText={error ? error.message : helperText}
           {...rest}
-          {...field}
         />
       )}
     />
