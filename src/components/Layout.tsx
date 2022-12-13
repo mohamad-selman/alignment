@@ -87,7 +87,7 @@ const Layout = ({ children, navLinks }: LayoutProps) => (
       </NavBar>
     </Header>
     <main>
-      <Container component='main' maxWidth='lg' sx={{ pt: 2, pb: 4 }}>
+      <Container component='main' maxWidth='lg' sx={{ py: 4 }}>
         {children}
       </Container>
     </main>
