@@ -21,3 +21,9 @@ export interface Alignment {
   seq1Aligned: string;
   seq2Aligned: string;
 }
+
+export interface Result {
+  alignMatrix: number[][];
+  alignmentScore: number;
+  optimalAlignments: Alignment[];
+}

@@ -1,15 +1,14 @@
-import { Scoring, Alignment, Nucleotide } from '@customTypes/alignment';
+import {
+  Scoring,
+  Alignment,
+  Nucleotide,
+  Result,
+} from '@customTypes/alignment';
 
 interface Props {
   sequence1: string;
   sequence2: string;
   scoring: Scoring;
-}
-
-interface Result {
-  alignMatrix: number[][];
-  alignmentScore: number;
-  optimalAlignments: Alignment[];
 }
 
 const needlemanWunsch = (props: Props): Result => {
