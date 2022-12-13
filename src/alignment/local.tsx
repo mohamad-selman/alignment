@@ -83,11 +83,11 @@ const watermanSmith = (props: Props): Result => {
       } else if (alignMatrix[i][j] === alignMatrix[i - 1][j] + scoring.gap) {
         // up path
         seq1Aligned = seq1[i - 1] + seq1Aligned;
-        seq2Aligned = `_${seq2Aligned}`;
+        seq2Aligned = `—${seq2Aligned}`;
         i -= 1;
       } else {
         // left path
-        seq1Aligned = `_${seq1Aligned}`;
+        seq1Aligned = `—${seq1Aligned}`;
         seq2Aligned = seq2[j - 1] + seq2Aligned;
         j -= 1;
       }

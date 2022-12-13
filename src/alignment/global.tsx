@@ -46,12 +46,12 @@ const needlemanWunsch = (props: Props): Result => {
     if (i === 0 || j === 0) {
       while (i !== 0) {
         seq1Aligned = seq1[i - 1] + seq1Aligned;
-        seq2Aligned = `_${seq2Aligned}`;
+        seq2Aligned = `—${seq2Aligned}`;
         i -= 1;
       }
 
       while (j !== 0) {
-        seq1Aligned = `_${seq1Aligned}`;
+        seq1Aligned = `—${seq1Aligned}`;
         seq2Aligned = seq2[j - 1] + seq2Aligned;
         j -= 1;
       }
@@ -73,11 +73,11 @@ const needlemanWunsch = (props: Props): Result => {
     }
     if (alignMatrix[i][j] === alignMatrix[i - 1][j] + scoring.gap) {
       // up path
-      backtrack(i - 1, j, seq1[i - 1] + seq1Aligned, `_${seq2Aligned}`);
+      backtrack(i - 1, j, seq1[i - 1] + seq1Aligned, `—${seq2Aligned}`);
     }
     if (alignMatrix[i][j] === alignMatrix[i][j - 1] + scoring.gap) {
       // left path
-      backtrack(i, j - 1, `_${seq1Aligned}`, seq2[j - 1] + seq2Aligned);
+      backtrack(i, j - 1, `—${seq1Aligned}`, seq2[j - 1] + seq2Aligned);
     }
   };
 
