@@ -20,6 +20,7 @@ export type Nucleotide = 'A' | 'C' | 'G' | 'T';
 export interface Alignment {
   seq1Aligned: string;
   seq2Aligned: string;
+  path: number[][];
 }
 
 export interface Result {

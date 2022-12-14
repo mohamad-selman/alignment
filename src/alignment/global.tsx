@@ -42,7 +42,10 @@ const needlemanWunsch = (props: Props): Result => {
 
   // Backtrack to find all optimal alignments
   const alignments: Alignment[] = [];
-  const backtrack = (i: number, j: number, seq1Aligned: string, seq2Aligned: string) => {
+  // eslint-disable-next-line max-len
+  const backtrack = (i: number, j: number, seq1Aligned: string, seq2Aligned: string, path: number[][]) => {
+    path.push([i, j]);
+
     if (i === 0 || j === 0) {
       while (i !== 0) {
         seq1Aligned = seq1[i - 1] + seq1Aligned;
@@ -59,6 +62,7 @@ const needlemanWunsch = (props: Props): Result => {
       alignments.push({
         seq1Aligned,
         seq2Aligned,
+        path,
       });
 
       return;
@@ -69,15 +73,15 @@ const needlemanWunsch = (props: Props): Result => {
 
     if (alignMatrix[i][j] === (alignMatrix[i - 1][j - 1] + scoring.matchOrMismatch[aChar][bChar])) {
       // diagonal path
-      backtrack(i - 1, j - 1, seq1[i - 1] + seq1Aligned, seq2[j - 1] + seq2Aligned);
+      backtrack(i - 1, j - 1, seq1[i - 1] + seq1Aligned, seq2[j - 1] + seq2Aligned, [...path]);
     }
     if (alignMatrix[i][j] === alignMatrix[i - 1][j] + scoring.gap) {
       // up path
-      backtrack(i - 1, j, seq1[i - 1] + seq1Aligned, `—${seq2Aligned}`);
+      backtrack(i - 1, j, seq1[i - 1] + seq1Aligned, `—${seq2Aligned}`, [...path]);
     }
     if (alignMatrix[i][j] === alignMatrix[i][j - 1] + scoring.gap) {
       // left path
-      backtrack(i, j - 1, `—${seq1Aligned}`, seq2[j - 1] + seq2Aligned);
+      backtrack(i, j - 1, `—${seq1Aligned}`, seq2[j - 1] + seq2Aligned, [...path]);
     }
   };
 
@@ -85,7 +89,8 @@ const needlemanWunsch = (props: Props): Result => {
   const j = seq2.length;
   const seq1Aligned = '';
   const seq2Aligned = '';
-  backtrack(i, j, seq1Aligned, seq2Aligned);
+  const path: number[][] = [];
+  backtrack(i, j, seq1Aligned, seq2Aligned, path);
 
   return {
     alignMatrix,
