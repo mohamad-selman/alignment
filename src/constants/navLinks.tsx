@@ -1,11 +1,11 @@
 const navLinks = [
   {
     title: 'Global Alignment',
-    href: '#',
+    href: '/global',
   },
   {
     title: 'Local Alignment',
-    href: '#',
+    href: '/local',
   },
 ];
 
