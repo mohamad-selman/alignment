@@ -8,6 +8,8 @@ import {
   Divider,
   TableContainer,
   Paper,
+  Switch,
+  FormControlLabel,
 } from '@mui/material';
 import { CustomTextField } from '@src/components/CustomTextField';
 import AlignmentMatrix from '@src/components/AlignmentMatrix';
@@ -49,6 +51,7 @@ const useInputForm = () => {
 const Test = () => {
   let result: null | Result = null;
   const [selected, setSelected] = useState(0);
+  const [matrixSwitch, setMatrixSwitch] = useState(false);
   const {
     control,
     isValid,
@@ -112,25 +115,34 @@ const Test = () => {
               label='Second Sequence'
             />
           </Box>
-          <Box sx={{ display: 'flex', flexDirection: 'row', columnGap: '0.75rem' }}>
-            <CustomTextField
-              name='match'
-              type='number'
-              control={control}
-              label='Match Score'
-            />
-            <CustomTextField
-              name='mismatch'
-              type='number'
-              control={control}
-              label='Mismatch Score'
-            />
-            <CustomTextField
-              name='gapPenalty'
-              type='number'
-              control={control}
-              label='Gap Penalty'
-            />
+          <Box sx={{
+            display: 'flex', columnGap: '2rem', justifyContent: 'space-between',
+          }}>
+            <Box sx={{ display: 'flex', flexDirection: 'row', columnGap: '0.75rem' }}>
+              <CustomTextField
+                name='match'
+                type='number'
+                control={control}
+                label='Match Score'
+              />
+              <CustomTextField
+                name='mismatch'
+                type='number'
+                control={control}
+                label='Mismatch Score'
+              />
+              <CustomTextField
+                name='gapPenalty'
+                type='number'
+                control={control}
+                label='Gap Penalty'
+              />
+            </Box>
+            <Box>
+              <FormControlLabel control={
+                <Switch checked={matrixSwitch} onChange={() => setMatrixSwitch(!matrixSwitch)} />
+              } label='matrix' />
+            </Box>
           </Box>
         </Box>
       </form>
