@@ -13,6 +13,7 @@ import {
 } from '@mui/material';
 import { CustomTextField } from '@src/components/CustomTextField';
 import AlignmentMatrix from '@src/components/AlignmentMatrix';
+import Alignments from '@src/components/Alignments';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -208,32 +209,11 @@ const Test = () => {
       <Divider sx={{ py: 4 }}>Results</Divider>
       {isValid && !isValidating && result && <>
         <TableContainer>
-          <Box sx={{ display: 'flex', columnGap: '0.5rem', mb: 4 }}>
-            {result.optimalAlignments.map((oa, idx) => (
-              <Paper
-                key={idx}
-                variant='outlined'
-                onClick={() => setSelected(idx)}
-                // eslint-disable-next-line prefer-object-spread, object-curly-newline
-                sx={Object.assign({ px: 4, py: 1, cursor: 'pointer', flex: 'none' }, idx === selected ? { backgroundColor: 'primary.main' } : {})}
-              >
-                <Typography
-                  letterSpacing={3}
-                  fontWeight={500}
-                  color={idx === selected ? 'white' : 'black'}
-                >
-                    {oa.seq2Aligned}
-                  </Typography>
-                  <Typography
-                    letterSpacing={3}
-                    fontWeight={500}
-                    color={idx === selected ? 'white' : 'black'}
-                  >
-                    {oa.seq1Aligned}
-                  </Typography>
-              </Paper>
-            ))}
-          </Box>
+          <Alignments
+            optimalAlignments={result.optimalAlignments}
+            selected={selected}
+            setSelected={setSelected}
+          />
         </TableContainer>
         <TableContainer>
           <AlignmentMatrix
