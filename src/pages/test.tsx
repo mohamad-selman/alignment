@@ -151,7 +151,7 @@ const Test = () => {
         Needleman-Wunsch Algorithm
       </Typography>
       <form noValidate>
-        <Box sx={{ display: 'flex', flexDirection: 'column', rowGap: '1.5rem' }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', rowGap: '2rem' }}>
           <Box sx={{ display: 'flex', flexDirection: 'row', columnGap: '0.75rem' }}>
             <CustomTextField
               name='seq1'
@@ -165,26 +165,26 @@ const Test = () => {
             />
           </Box>
           <Box sx={{
-            display: 'flex', columnGap: '2rem', justifyContent: 'space-between',
+            display: 'flex', flexDirection: 'row', columnGap: '2rem', justifyContent: 'space-between',
           }}>
             {matrixSwitch
-              ? <Box display='flex' flexDirection='column'>
-                  <Box display='flex' flexDirection='row'>
+              ? <Box sx={{ display: 'flex', flexDirection: 'column', rowGap: '0.75rem' }}>
+                  <Box sx={{ display: 'flex', flexDirection: 'row', columnGap: '0.75rem' }}>
                     <CustomTextField name='AA' type='number' control={control} label='A-A'/>
                     <CustomTextField name='AC' type='number' control={control} label='A-C'/>
                     <CustomTextField name='AG' type='number' control={control} label='A-G'/>
                     <CustomTextField name='AT' type='number' control={control} label='A-T'/>
                   </Box>
-                  <Box display='flex' flexDirection='row'>
+                  <Box sx={{ display: 'flex', flexDirection: 'row', columnGap: '0.75rem' }}>
                     <CustomTextField name='CC' type='number' control={control} label='C-C'/>
                     <CustomTextField name='CG' type='number' control={control} label='C-G'/>
                     <CustomTextField name='CT' type='number' control={control} label='C-T'/>
                   </Box>
-                  <Box display='flex' flexDirection='row'>
+                  <Box sx={{ display: 'flex', flexDirection: 'row', columnGap: '0.75rem' }}>
                     <CustomTextField name='GG' type='number' control={control} label='G-G'/>
                     <CustomTextField name='GT' type='number' control={control} label='G-T'/>
                   </Box>
-                  <Box display='flex' flexDirection='row'>
+                  <Box sx={{ display: 'flex', flexDirection: 'row', columnGap: '0.75rem' }}>
                     <CustomTextField name='TT' type='number' control={control} label='T-T'/>
                   </Box>
                 </Box>
