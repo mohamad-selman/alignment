@@ -108,6 +108,8 @@ const watermanSmith = (props: Props): Result => {
   }
 
   return {
+    seq1,
+    seq2,
     alignMatrix,
     alignmentScore: score,
     optimalAlignments: alignments,

@@ -24,6 +24,8 @@ export interface Alignment {
 }
 
 export interface Result {
+  seq1: string,
+  seq2: string,
   alignMatrix: number[][];
   alignmentScore: number;
   optimalAlignments: Alignment[];

@@ -93,6 +93,8 @@ const needlemanWunsch = (props: Props): Result => {
   backtrack(i, j, seq1Aligned, seq2Aligned, path);
 
   return {
+    seq1,
+    seq2,
     alignMatrix,
     alignmentScore: alignMatrix[seq1.length][seq2.length],
     optimalAlignments: alignments,
