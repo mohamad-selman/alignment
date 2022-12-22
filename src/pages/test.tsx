@@ -169,6 +169,9 @@ const Test = () => {
           }}>
             {matrixSwitch
               ? <Box sx={{ display: 'flex', flexDirection: 'column', rowGap: '0.75rem' }}>
+                  <Box>
+                    <CustomTextField name='gapPenalty' type='number' control={control} label='Gap Penalty' />
+                  </Box>
                   <Box sx={{ display: 'flex', flexDirection: 'row', columnGap: '0.75rem' }}>
                     <CustomTextField name='AA' type='number' control={control} label='A-A'/>
                     <CustomTextField name='AC' type='number' control={control} label='A-C'/>
