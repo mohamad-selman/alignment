@@ -237,8 +237,8 @@ const Test = () => {
         </TableContainer>
         <TableContainer>
           <AlignmentMatrix
-            seq1={inputData.seq1}
-            seq2={inputData.seq2}
+            seq1={result.seq2}
+            seq2={result.seq1}
             alignMatrix={result.alignMatrix}
             path={result.optimalAlignments[selected].path}
           />
