@@ -6,14 +6,11 @@ import {
   Typography,
   Box,
   Divider,
-  TableContainer,
-  Paper,
   Switch,
   FormControlLabel,
 } from '@mui/material';
 import { CustomTextField } from '@src/components/CustomTextField';
-import AlignmentMatrix from '@src/components/AlignmentMatrix';
-import Alignments from '@src/components/Alignments';
+import AlignmentResults from '@src/components/AlignmentResults';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -207,23 +204,13 @@ const Test = () => {
         </Box>
       </form>
       <Divider sx={{ py: 4 }}>Results</Divider>
-      {isValid && !isValidating && result && <>
-        <TableContainer>
-          <Alignments
-            optimalAlignments={result.optimalAlignments}
+      {isValid && !isValidating && result
+      && <AlignmentResults
+            result={result}
             selected={selected}
             setSelected={setSelected}
           />
-        </TableContainer>
-        <TableContainer>
-          <AlignmentMatrix
-            seq1={result.seq2}
-            seq2={result.seq1}
-            alignMatrix={result.alignMatrix}
-            path={result.optimalAlignments[selected].path}
-          />
-        </TableContainer>
-      </>}
+      }
     </Layout>
   );
 };
