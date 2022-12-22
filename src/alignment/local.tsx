@@ -67,6 +67,7 @@ const watermanSmith = (props: Props): Result => {
     let j = scoreIndex[1];
     let seq1Aligned = '';
     let seq2Aligned = '';
+    const path: number[][] = [scoreIndex];
 
     while (countdown > 0) {
       const aChar = seq1[i - 1] as Nucleotide;
@@ -80,22 +81,29 @@ const watermanSmith = (props: Props): Result => {
         i -= 1;
         j -= 1;
         countdown = alignMatrix[i][j];
+
+        path.push([i, j]);
       } else if (alignMatrix[i][j] === alignMatrix[i - 1][j] + scoring.gap) {
         // up path
         seq1Aligned = seq1[i - 1] + seq1Aligned;
         seq2Aligned = `—${seq2Aligned}`;
         i -= 1;
+
+        path.push([i, j]);
       } else {
         // left path
         seq1Aligned = `—${seq1Aligned}`;
         seq2Aligned = seq2[j - 1] + seq2Aligned;
         j -= 1;
+
+        path.push([i, j]);
       }
     }
 
     alignments.push({
       seq1Aligned,
       seq2Aligned,
+      path,
     });
   }
 
