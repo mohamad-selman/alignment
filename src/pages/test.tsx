@@ -28,6 +28,16 @@ const useInputForm = () => {
       match: z.string().regex(/^-?\d+$/, 'Invalid number').transform(Number),
       mismatch: z.string().regex(/^-?\d+$/, 'Invalid number').transform(Number),
       gapPenalty: z.string().regex(/^-?\d+$/, 'Invalid number').transform(Number),
+      AA: z.string().regex(/^-?\d+$/, 'Invalid number').transform(Number),
+      AC: z.string().regex(/^-?\d+$/, 'Invalid number').transform(Number),
+      AG: z.string().regex(/^-?\d+$/, 'Invalid number').transform(Number),
+      AT: z.string().regex(/^-?\d+$/, 'Invalid number').transform(Number),
+      CC: z.string().regex(/^-?\d+$/, 'Invalid number').transform(Number),
+      CG: z.string().regex(/^-?\d+$/, 'Invalid number').transform(Number),
+      CT: z.string().regex(/^-?\d+$/, 'Invalid number').transform(Number),
+      GG: z.string().regex(/^-?\d+$/, 'Invalid number').transform(Number),
+      GT: z.string().regex(/^-?\d+$/, 'Invalid number').transform(Number),
+      TT: z.string().regex(/^-?\d+$/, 'Invalid number').transform(Number),
     })),
     defaultValues: {
       seq1: 'ACTCG',
@@ -35,6 +45,16 @@ const useInputForm = () => {
       match: '1',
       mismatch: '0',
       gapPenalty: '-1',
+      AA: '1',
+      AC: '0',
+      AG: '0',
+      AT: '0',
+      CC: '1',
+      CG: '0',
+      CT: '0',
+      GG: '1',
+      GT: '0',
+      TT: '1',
     },
   });
 
@@ -118,30 +138,37 @@ const Test = () => {
           <Box sx={{
             display: 'flex', columnGap: '2rem', justifyContent: 'space-between',
           }}>
-            <Box sx={{ display: 'flex', flexDirection: 'row', columnGap: '0.75rem' }}>
-              <CustomTextField
-                name='match'
-                type='number'
-                control={control}
-                label='Match Score'
-              />
-              <CustomTextField
-                name='mismatch'
-                type='number'
-                control={control}
-                label='Mismatch Score'
-              />
-              <CustomTextField
-                name='gapPenalty'
-                type='number'
-                control={control}
-                label='Gap Penalty'
-              />
-            </Box>
+            {matrixSwitch
+              ? <Box display='flex' flexDirection='column'>
+                  <Box display='flex' flexDirection='row'>
+                    <CustomTextField name='AA' type='number' control={control} label='A-A'/>
+                    <CustomTextField name='AC' type='number' control={control} label='A-C'/>
+                    <CustomTextField name='AG' type='number' control={control} label='A-G'/>
+                    <CustomTextField name='AT' type='number' control={control} label='A-T'/>
+                  </Box>
+                  <Box display='flex' flexDirection='row'>
+                    <CustomTextField name='CC' type='number' control={control} label='C-C'/>
+                    <CustomTextField name='CG' type='number' control={control} label='C-G'/>
+                    <CustomTextField name='CT' type='number' control={control} label='C-T'/>
+                  </Box>
+                  <Box display='flex' flexDirection='row'>
+                    <CustomTextField name='GG' type='number' control={control} label='G-G'/>
+                    <CustomTextField name='GT' type='number' control={control} label='G-T'/>
+                  </Box>
+                  <Box display='flex' flexDirection='row'>
+                    <CustomTextField name='TT' type='number' control={control} label='T-T'/>
+                  </Box>
+                </Box>
+              : <Box sx={{ display: 'flex', flexDirection: 'row', columnGap: '0.75rem' }}>
+                  <CustomTextField name='match' type='number' control={control} label='Match Score' />
+                  <CustomTextField name='mismatch' type='number' control={control} label='Mismatch Score' />
+                  <CustomTextField name='gapPenalty' type='number' control={control} label='Gap Penalty' />
+                </Box>
+            }
             <Box>
               <FormControlLabel control={
                 <Switch checked={matrixSwitch} onChange={() => setMatrixSwitch(!matrixSwitch)} />
-              } label='matrix' />
+              } label='Matrix' />
             </Box>
           </Box>
         </Box>
@@ -166,9 +193,9 @@ const Test = () => {
                     {oa.seq2Aligned}
                   </Typography>
                   <Typography
-                  letterSpacing={3}
-                  fontWeight={500}
-                  color={idx === selected ? 'white' : 'black'}
+                    letterSpacing={3}
+                    fontWeight={500}
+                    color={idx === selected ? 'white' : 'black'}
                   >
                     {oa.seq1Aligned}
                   </Typography>
