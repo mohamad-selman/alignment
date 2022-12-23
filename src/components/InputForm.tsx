@@ -2,24 +2,7 @@ import { Box, Switch, FormControlLabel } from '@mui/material';
 import { CustomTextField } from '@src/components/CustomTextField';
 import { Dispatch, SetStateAction } from 'react';
 import { Control } from 'react-hook-form';
-
-type FormValues = {
-  seq1: string;
-  seq2: string;
-  match: string;
-  mismatch: string;
-  gapPenalty: string;
-  AA: string;
-  AC: string;
-  AG: string;
-  AT: string;
-  CC: string;
-  CG: string;
-  CT: string;
-  GG: string;
-  GT: string;
-  TT: string;
-}
+import FormValues from '@customTypes/form';
 
 interface Props {
   control: Control<FormValues, any>;
