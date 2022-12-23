@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import navLinks from '@constants/navLinks';
 import Layout from '@components/Layout';
 import { Typography, Divider } from '@mui/material';
@@ -10,10 +9,7 @@ import scoringMatrix from '@src/components/scoringMatrix';
 import { Result } from '@customTypes/alignment';
 
 const Test = () => {
-  console.log('In Test');
-
   let result: null | Result = null;
-  const [matrixSwitch, setMatrixSwitch] = useState(false);
   const {
     control,
     isValid,
@@ -35,13 +31,14 @@ const Test = () => {
     GG: '1',
     GT: '0',
     TT: '1',
+    matrixSwitch: false,
   });
 
   if (isValid && !isValidating) {
     result = needlemanWunsch({
       sequence1: inputData.seq2,
       sequence2: inputData.seq1,
-      scoring: scoringMatrix(matrixSwitch, inputData),
+      scoring: scoringMatrix(inputData),
     });
   }
 
@@ -50,11 +47,7 @@ const Test = () => {
       <Typography variant='h4' sx={{ mb: 5 }} color='secondary.main'>
         Needleman-Wunsch Algorithm
       </Typography>
-      <InputForm
-        control={control}
-        matrixSwitch={matrixSwitch}
-        setMatrixSwitch={setMatrixSwitch}
-      />
+      <InputForm control={control} matrixSwitch={inputData.matrixSwitch} />
       <Divider sx={{ py: 4 }}>Results</Divider>
       {isValid && !isValidating && result && <AlignmentResults result={result} />}
     </Layout>

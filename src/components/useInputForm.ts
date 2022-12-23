@@ -23,6 +23,7 @@ const useInputForm = (defaultValues: FormValues) => {
       GG: z.string().regex(/^-?\d+$/, 'Invalid number').transform(Number),
       GT: z.string().regex(/^-?\d+$/, 'Invalid number').transform(Number),
       TT: z.string().regex(/^-?\d+$/, 'Invalid number').transform(Number),
+      matrixSwitch: z.boolean(),
     })),
     defaultValues,
   });

@@ -1,8 +1,8 @@
 import { Scoring } from '@customTypes/alignment';
 import FormValues from '@customTypes/form';
 
-const scoringMatrix = (matrixSwitch: boolean, inputData: FormValues): Scoring => {
-  const matchOrMismatch = matrixSwitch
+const scoringMatrix = (inputData: FormValues): Scoring => {
+  const matchOrMismatch = inputData.matrixSwitch
     ? {
       A: {
         A: Number(inputData.AA),

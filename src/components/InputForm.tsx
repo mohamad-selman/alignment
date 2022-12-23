@@ -1,17 +1,16 @@
-import { Box, Switch, FormControlLabel } from '@mui/material';
+import { Box } from '@mui/material';
 import { CustomTextField } from '@src/components/CustomTextField';
-import { Dispatch, SetStateAction } from 'react';
 import { Control } from 'react-hook-form';
 import FormValues from '@customTypes/form';
+import { CustomSwitch } from '@src/components/CustomSwitch';
 
 interface Props {
   control: Control<FormValues, any>;
   matrixSwitch: boolean;
-  setMatrixSwitch: Dispatch<SetStateAction<boolean>>;
 }
 
 const InputForm = (props: Props) => {
-  const { control, matrixSwitch, setMatrixSwitch } = props;
+  const { control, matrixSwitch } = props;
 
   return (
     <form noValidate>
@@ -62,9 +61,7 @@ const InputForm = (props: Props) => {
               </Box>
           }
           <Box>
-            <FormControlLabel control={
-              <Switch checked={matrixSwitch} onChange={() => setMatrixSwitch(!matrixSwitch)} />
-            } label='Matrix' />
+            <CustomSwitch name='matrixSwitch' control={control} label='Matrix' />
           </Box>
         </Box>
       </Box>

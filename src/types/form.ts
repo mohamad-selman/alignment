@@ -14,6 +14,7 @@ interface FormValues {
   GG: string;
   GT: string;
   TT: string;
+  matrixSwitch: boolean;
 }
 
 export default FormValues;
