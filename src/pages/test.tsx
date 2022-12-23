@@ -1,66 +1,16 @@
+import { useState } from 'react';
 import navLinks from '@constants/navLinks';
-import needlemanWunsch from '@src/alignment/global';
-import { Result } from '@customTypes/alignment';
 import Layout from '@components/Layout';
 import { Typography, Divider } from '@mui/material';
+import useInputForm from '@src/components/useInputForm';
 import InputForm from '@src/components/InputForm';
 import AlignmentResults from '@src/components/AlignmentResults';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useState } from 'react';
-
-const useInputForm = () => {
-  const { control, watch, formState: { isValid, isValidating } } = useForm({
-    mode: 'onChange',
-    reValidateMode: 'onChange',
-    resolver: zodResolver(z.object({
-      seq1: z.string().regex(/^[ACGT]+$/, 'Invalid DNA sequence'),
-      seq2: z.string().regex(/^[ACGT]+$/, 'Invalid DNA sequence'),
-      match: z.string().regex(/^-?\d+$/, 'Invalid number').transform(Number),
-      mismatch: z.string().regex(/^-?\d+$/, 'Invalid number').transform(Number),
-      gapPenalty: z.string().regex(/^-?\d+$/, 'Invalid number').transform(Number),
-      AA: z.string().regex(/^-?\d+$/, 'Invalid number').transform(Number),
-      AC: z.string().regex(/^-?\d+$/, 'Invalid number').transform(Number),
-      AG: z.string().regex(/^-?\d+$/, 'Invalid number').transform(Number),
-      AT: z.string().regex(/^-?\d+$/, 'Invalid number').transform(Number),
-      CC: z.string().regex(/^-?\d+$/, 'Invalid number').transform(Number),
-      CG: z.string().regex(/^-?\d+$/, 'Invalid number').transform(Number),
-      CT: z.string().regex(/^-?\d+$/, 'Invalid number').transform(Number),
-      GG: z.string().regex(/^-?\d+$/, 'Invalid number').transform(Number),
-      GT: z.string().regex(/^-?\d+$/, 'Invalid number').transform(Number),
-      TT: z.string().regex(/^-?\d+$/, 'Invalid number').transform(Number),
-    })),
-    defaultValues: {
-      seq1: 'ACTCG',
-      seq2: 'ACAGTAG',
-      match: '1',
-      mismatch: '0',
-      gapPenalty: '-1',
-      AA: '1',
-      AC: '0',
-      AG: '0',
-      AT: '0',
-      CC: '1',
-      CG: '0',
-      CT: '0',
-      GG: '1',
-      GT: '0',
-      TT: '1',
-    },
-  });
-
-  const inputData = watch();
-
-  return {
-    control,
-    isValid,
-    isValidating,
-    inputData,
-  };
-};
+import needlemanWunsch from '@src/alignment/global';
+import { Result } from '@customTypes/alignment';
 
 const Test = () => {
+  console.log('In Test');
+
   let result: null | Result = null;
   const [matrixSwitch, setMatrixSwitch] = useState(false);
   const {
@@ -68,7 +18,23 @@ const Test = () => {
     isValid,
     isValidating,
     inputData,
-  } = useInputForm();
+  } = useInputForm({
+    seq1: 'ACTCG',
+    seq2: 'ACAGTAG',
+    match: '1',
+    mismatch: '0',
+    gapPenalty: '-1',
+    AA: '1',
+    AC: '0',
+    AG: '0',
+    AT: '0',
+    CC: '1',
+    CG: '0',
+    CT: '0',
+    GG: '1',
+    GT: '0',
+    TT: '1',
+  });
 
   if (isValid && !isValidating) {
     const matchOrMismatch = matrixSwitch
