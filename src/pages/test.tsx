@@ -68,7 +68,6 @@ const useInputForm = () => {
 
 const Test = () => {
   let result: null | Result = null;
-  const [selected, setSelected] = useState(0);
   const [matrixSwitch, setMatrixSwitch] = useState(false);
   const {
     control,
@@ -204,13 +203,7 @@ const Test = () => {
         </Box>
       </form>
       <Divider sx={{ py: 4 }}>Results</Divider>
-      {isValid && !isValidating && result
-      && <AlignmentResults
-            result={result}
-            selected={selected}
-            setSelected={setSelected}
-          />
-      }
+      {isValid && !isValidating && result && <AlignmentResults result={result} />}
     </Layout>
   );
 };
