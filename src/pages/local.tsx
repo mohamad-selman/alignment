@@ -16,8 +16,8 @@ const Local = () => {
     isValidating,
     inputData,
   } = useInputForm({
-    seq1: 'ACTCG',
-    seq2: 'ACAGTAG',
+    seq1: 'AACCTATAGCT',
+    seq2: 'GCGATATA',
     match: '1',
     mismatch: '0',
     gapPenalty: '-1',
