@@ -8,13 +8,16 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 
 const NavBarBrand = ({ logo }: { logo: string }) => (
-  <Box
-    component='img'
-    sx={{ display: 'flex', mr: 3 }}
-    src={logo}
-    alt='logo'
-    height='60px'
-  />
+  <Box sx={{ display: 'flex', mr: 3 }}>
+    <Link href='/'>
+      <Box
+        component='img'
+        src={logo}
+        alt='logo'
+        height='60px'
+      />
+    </Link>
+  </Box>
 );
 
 interface NavLink {
