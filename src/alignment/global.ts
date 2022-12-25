@@ -51,12 +51,16 @@ const needlemanWunsch = (props: Props): Result => {
         seq1Aligned = seq1[i - 1] + seq1Aligned;
         seq2Aligned = `—${seq2Aligned}`;
         i -= 1;
+
+        path.push([i, j]);
       }
 
       while (j !== 0) {
         seq1Aligned = `—${seq1Aligned}`;
         seq2Aligned = seq2[j - 1] + seq2Aligned;
         j -= 1;
+
+        path.push([i, j]);
       }
 
       alignments.push({
