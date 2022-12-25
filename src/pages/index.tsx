@@ -7,7 +7,7 @@ const Home = () => (
     <Box display='flex' justifyContent='center' alignItems='center' minHeight='50vh'>
       <Typography variant='h1'>
         Sequence
-        <Box sx={{ color: 'primary.main', display: 'inline' }}> Alignment</Box>
+        <Box sx={{ color: 'primary.main' }}> Alignment</Box>
       </Typography>
     </Box>
   </Layout>
