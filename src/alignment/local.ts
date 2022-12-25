@@ -45,6 +45,10 @@ const watermanSmith = (props: Props): Result => {
   const alignments: Alignment[] = [];
   // eslint-disable-next-line max-len
   const backtrack = (i: number, j: number, seq1Aligned: string, seq2Aligned: string, path: number[][]) => {
+    if (alignments.length >= 20) {
+      return;
+    }
+
     path.push([i, j]);
 
     if (i === 0 || j === 0 || alignMatrix[i][j] === 0) {
